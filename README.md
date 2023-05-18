@@ -7,9 +7,10 @@ La cabecera Host es necesaria en las solicitudes HTTP/1.1, ya que permite a un s
 Es importante destacar que la cabecera Host debe estar presente en la mayoría de las solicitudes HTTP/1.1, a menos que se utilice una conexión HTTP/1.0 o se especifique una dirección IP en su lugar. Sin esta cabecera, el servidor no sabrá a qué recurso o servicio dirigir la solicitud.
 
 =>Ejemplo
-		GET / HTTP/1.1
-		Host: openai.com
-		
+
+​			GET / HTTP/1.1
+​			Host: openai.com
+​		
 En este caso, la línea "Host: openai.com" indica que la solicitud se envía al servidor que aloja el sitio web de OpenAI.
 
 La cabecera Host permite que el servidor identifique qué sitio web se está solicitando y dirija la solicitud al servidor correcto. Esto es especialmente importante en situaciones donde un servidor puede alojar varios sitios web o servicios en la misma dirección IP.
@@ -28,9 +29,10 @@ Existen diferentes valores que se pueden utilizar en el encabezado "Connection".
 "Close": Indica que la conexión debe cerrarse después de que se complete la respuesta actual. Esto significa que se establecerá una nueva conexión para cualquier solicitud posterior.
 
 =>Ejemplo
-		GET / HTTP/1.1
-		Host: openai.com
-		Connection: keep-alive
+
+			GET / HTTP/1.1
+			Host: openai.com
+			Connection: keep-alive
 		
 En este ejemplo, la línea "Connection: keep-alive" indica que se desea mantener la conexión abierta después de que se complete la respuesta. Esto permite una comunicación más eficiente entre el cliente y el servidor, ya que la conexión se puede reutilizar para futuras solicitudes y respuestas sin tener que establecer una nueva conexión cada vez.
 
@@ -44,9 +46,10 @@ Indica la longitud en bytes del cuerpo de la respuesta. Este encabezado es espec
 Al especificar el valor del encabezado "Content-Length", el servidor informa al cliente cuántos bytes debe esperar recibir como parte del cuerpo de la respuesta. Esto permite que el cliente sepa cuántos bytes debe leer para procesar correctamente la respuesta.
 
 => Ejemplo 
-		HTTP/1.1 200 OK
-		Content-Length: 4532
-		Content-Type: text/html
+
+			HTTP/1.1 200 OK
+			Content-Length: 4532
+			Content-Type: text/html
 
 		<!DOCTYPE html>
 		<html>
@@ -70,7 +73,7 @@ El encabezado "Sec-CH-UA" (Secure Context Header User Agent) es un encabezado HT
 		GET / HTTP/1.1
 		Host: www.example.com
 		Sec-CH-UA: "Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"
-		
+
 En este ejemplo hipotético, el encabezado "Sec-CH-UA" proporciona información sobre la versión del navegador Chrome y su relación con el proyecto de código abierto Chromium. El valor del encabezado se divide en varias partes, separadas por comas. Cada parte representa un componente del agente de usuario y su versión correspondiente.
 
 
@@ -83,7 +86,7 @@ HEADER SEC-CH-UA-PLATAFORM
 		GET / HTTP/1.1
 		Host: www.example.com
 		Sec-CH-UA-Platform: "Linux"
-		
+
 En este ejemplo, el encabezado "Sec-CH-UA-Platform" indica que el navegador se está ejecutando en una plataforma Linux. Este valor puede cambiar dependiendo del sistema operativo en el que se ejecute el navegador.
 
 
@@ -96,7 +99,7 @@ HEADER SEC-CH-UA-MOBILE
 		GET / HTTP/1.1
 		Host: www.example.com
 		Sec-CH-UA-Mobile: ?0
-		
+
 En este ejemplo, el valor "?0" en el encabezado "Sec-CH-UA-Mobile" indica que el navegador no se está ejecutando en un dispositivo móvil.
 
 => Ejemplo 2
@@ -104,7 +107,7 @@ En este ejemplo, el valor "?0" en el encabezado "Sec-CH-UA-Mobile" indica que el
 		GET / HTTP/1.1
 		Host: www.example.com
 		Sec-CH-UA-Mobile: ?1
-		
+
 En este ejemplo, el valor "?1" en el encabezado "Sec-CH-UA-Mobile" indica que el navegador se está ejecutando en un dispositivo móvil. Este valor o indicador específico puede variar dependiendo de la implementación y la detección del dispositivo móvil.
 
 
@@ -117,7 +120,7 @@ El encabezado "User-Agent" es un campo en las solicitudes HTTP que proporciona i
 		GET / HTTP/1.1
 		Host: www.example.com
 		User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 		(KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36
-		
+
 En este ejemplo, el encabezado "User-Agent" indica que el navegador que realizó la solicitud es Chrome, versión 93.0.4577.82, en un sistema operativo Windows 10.
 
 
@@ -130,7 +133,7 @@ Se utiliza en las solicitudes y respuestas HTTP para indicar el tipo de contenid
 		POST /api/data HTTP/1.1
 		Host: www.example.com
 		Content-Type: application/json
-		
+
 En este ejemplo, el encabezado "Content-Type" indica que el cuerpo de la solicitud contiene datos en formato JSON. La parte "application/json" del encabezado especifica el tipo de contenido como JSON.
 
 El encabezado "Content-Type" también se utiliza en las respuestas HTTP para indicar el tipo de contenido devuelto por el servidor
@@ -139,7 +142,7 @@ El encabezado "Content-Type" también se utiliza en las respuestas HTTP para ind
 
 		HTTP/1.1 200 OK
 		Content-Type: text/html
-		
+
 En este caso, el encabezado "Content-Type" indica que el cuerpo de la respuesta contiene contenido en formato HTML.
 
 
@@ -152,7 +155,7 @@ El encabezado "Accept" se utiliza en las solicitudes HTTP para indicar los tipos
 		GET /api/data HTTP/1.1
 		Host: www.example.com
 		Accept: application/json, text/html
-		
+
 En este ejemplo, el encabezado "Accept" indica que el cliente puede manejar tanto contenido en formato JSON como en formato HTML. Los tipos de contenido están enumerados en orden de preferencia, donde "application/json" tiene una prioridad más alta que "text/html".
 
 El servidor puede utilizar esta información para seleccionar y devolver la respuesta que mejor se ajuste a las preferencias del cliente en términos de tipos de contenido.
@@ -171,7 +174,7 @@ Indica el origen de la solicitud. Indica el dominio o la URL de donde proviene l
 		GET /api/data HTTP/1.1
 		Host: www.example.com
 		Origin: https://www.origin-example.com
-		
+
 En este ejemplo, el encabezado "Origin" indica que la solicitud proviene del dominio "https://www.origin-example.com".
 
 El encabezado "Origin" es importante en el contexto de seguridad del navegador para evitar solicitudes cruzadas no deseadas. Cuando se realiza una solicitud desde un origen a un servidor en un dominio diferente, el servidor puede verificar el encabezado "Origin" para determinar si debe permitir o bloquear la solicitud en función de la política de acceso cruzado configurada.
@@ -188,7 +191,7 @@ El encabezado "Sec-Fetch-Site" es un encabezado opcional que se utiliza en las s
 		GET /api/data HTTP/1.1
 		Host: www.example.com
 		Sec-Fetch-Site: same-origin
-		
+
 En este ejemplo, el encabezado "Sec-Fetch-Site" tiene el valor "same-origin", lo que indica que la solicitud se originó desde el mismo sitio o dominio en el que se encuentra la página actual.
 
 Otros posibles valores para el encabezado "Sec-Fetch-Site" pueden ser "cross-site" (para indicar que la solicitud se originó desde un sitio o dominio diferente) o "same-site" (para indicar que la solicitud se originó desde el mismo sitio y utilizando el mismo protocolo).
@@ -205,7 +208,7 @@ Es un encabezado opcional utilizado en las solicitudes HTTP. Indica el modo de r
 		GET /api/data HTTP/1.1
 		Host: www.example.com
 		Sec-Fetch-Mode: cors
-		
+
 En este ejemplo, el encabezado "Sec-Fetch-Mode" tiene el valor "cors", lo que indica que la solicitud se está realizando en el contexto de una solicitud CORS (Cross-Origin Resource Sharing). CORS es un mecanismo de seguridad utilizado en los navegadores para permitir que recursos en un origen (dominio) determinado sean accedidos desde otro origen.
 
 Otros posibles valores para el encabezado "Sec-Fetch-Mode" son "navigate" (indicando una solicitud de navegación), "no-cors" (indicando una solicitud sin CORS) y "same-origin" (indicando una solicitud que debe ser del mismo origen).
@@ -237,7 +240,7 @@ El encabezado "Referer" (o "Referer" en la forma incorrecta de ortografía segú
 		GET /api/data HTTP/1.1
 		Host: www.example.com
 		Referer: https://www.origin-example.com/page1
-		
+
 En este ejemplo, el encabezado "Referer" indica que la solicitud actual se originó desde la URL "https://www.origin-example.com/page1".
 
 El encabezado "Referer" puede ser útil para los servidores web, ya que proporciona información sobre la página de referencia o la ruta de navegación que llevó al usuario a realizar la solicitud actual. Esto puede ser utilizado para realizar seguimiento, análisis de tráfico, personalización de contenido, entre otros casos de uso.
@@ -254,7 +257,7 @@ Se utiliza en las solicitudes HTTP para indicar al servidor qué algoritmos de c
 		GET /api/data HTTP/1.1
 		Host: www.example.com
 		Accept-Encoding: gzip, deflate
-		
+
 
 En este ejemplo, el encabezado "Accept-Encoding" indica que el cliente puede manejar la compresión utilizando los algoritmos "gzip" y "deflate".
 
@@ -274,7 +277,7 @@ El encabezado "Accept-Language" se utiliza en las solicitudes HTTP para indicar 
 		GET /api/data HTTP/1.1
 		Host: www.example.com
 		Accept-Language: en-US, es-ES
-		
+
 En este ejemplo, el encabezado "Accept-Language" indica que el cliente prefiere recibir el contenido en inglés de Estados Unidos ("en-US") o en español de España ("es-ES"). Los idiomas están especificados en códigos de idioma y país, utilizando la notación de dos letras para el idioma y dos letras para el país.
 
 Cuando el servidor recibe este encabezado, puede utilizar esta información para seleccionar la versión adecuada del contenido, si está disponible en los idiomas solicitados. Puede devolver la respuesta en el idioma preferido por el cliente o, si no es posible, puede utilizar un idioma predeterminado.
